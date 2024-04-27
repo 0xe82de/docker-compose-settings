@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  postgresql:
+    image: postgres:11.6
+    container_name: postgres11.6
+    ports:
+      - 5432:5432
+    volumes:
+      - ./conf.d:/etc/postgresql/conf.d
+      - ./data:/var/lib/postgres
+      - ./initdb.d:/docker-entrypoint-initdb.d
+    env_file: .env
+    environment:
+      TZ: Asia/Seoul
+    restart: always
